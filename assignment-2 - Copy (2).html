@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Data Visualization Assignment 2</title>
+
+</head>
+
+<body>
+    <center>
+        <h1>Data Visualization Assignment 2</h1>
+        <h3> Name </h3>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <svg id="part_1" width="400" height="300" style="background-color:bisque">
+                        </svg>
+
+                    </td>
+                    <td>
+
+                        <svg id="part_2" width="400" height="300" style="background-color:bisque">
+                         <!--    <path id="path_0"></path>
+                            <g class="control_points"></g>
+                            <g class="bezier_points"></g> -->
+                                <line stroke="black" x1="50" x2="65" y1="250" y2="57"></line>
+                                <line stroke="black" x1="250" x2="238" y1="250" y2="72"></line>
+                                <line stroke="black" x1="65" x2="238" y1="57" y2="72"></line>
+                                <circle cx="50" cy="250" fill="black" r="5"></circle>
+                                <circle cx="65" cy="57" fill="black" r="5"></circle>
+                                <circle cx="250" cy="250" fill="black" r="5"></circle>
+                                <circle cx="238" cy="72" fill="black" r="5"></circle>
+                                <text dx="50" dy="250" color="black">P0(50,250)</text>
+                                <text dx="250" dy="250" color="black">P3(250,250)</text>
+                                <text dx="65" dy="57" color="black">P1(65,57)</text>
+                                <text dx="238" dy="72" color="black">P2(238,72)</text>
+                
+                            <!-- <path d="M50 250 C65 57 238 72 250 250" style="stroke:black; stroke-width:2;fill:none;"></path> -->
+                        </svg>
+                    </td>
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" id="mysvg" viewBox="0 0 500 400" style="background-color:bisque" preserveAspectRatio="xMidYMid meet">
+                            <circle fill="black" id="p1" cx="50" cy="250" r="5" class="control" />
+                            <circle fill="black" id="p2" cx="250" cy="250" r="5" class="control" />
+                            <circle fill="black" id="c1" cx="65" cy="57" r="5" class="control" />
+                            <circle fill="black" id="c2" cx="238" cy="72" r="5" class="control" />
+                            <line stroke="black" id="l1" x1="100" y1="250" x2="100" y2="100" />
+                            <line stroke="black "id="l2" x1="400" y1="250" x2="400" y2="100" /> -->
+                            <line stroke="black" id="l3" x1="100" y1="100" x2="400" y2="100"/>-->
+                        <path id="curve" d="M50,250 C65,57 238,72 250,250" style="stroke:black; stroke-width:2; fill:none;"/>
+                          </svg>
+                        <div id="output">
+                            <p id="path"></p>
+                        </div>
+                    </td>
+                    <td>
+                        <svg width="400" height="300" style="background-color:bisque">
+              <path style="stroke:steelblue; fill:none" d="
+                  M 50 250
+                  C 150 50
+                    200 50
+                    250 250"></path>
+
+              <!-- For illustration of the support points -->
+              <circle cx="50" cy="250" r="3"></circle>
+              <circle cx="150" cy="50" r="3"></circle>
+              <circle cx="200" cy="50" r="3"></circle>
+              <circle cx="250" cy="250" r="3"></circle>
+          </svg>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div name="control_panel_1">
+                            <button onclick="generate_random_circles()">generate random circles</button>
+                            <button onclick="remove_circles()">remove all circles</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div name="control_panel_2">
+                            <button onclick="generate_bezier_curve()">Create Cubic Bezier</button>
+                        </div>
+                    </td>
+                </tr>
+                <script src="https://d3js.org/d3.v5.min.js"></script>
+                <script src="bezier.js"></script>
+                <script src="part_1.js"></script>
+            </tbody>
+        </table>
+    </center>
+</body>
+
+</html>
