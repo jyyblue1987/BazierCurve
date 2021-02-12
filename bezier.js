@@ -121,7 +121,7 @@ function generate_bezier_curve() {
             p1 = getControlPoint(node.p1),
             p2 = getControlPoint(node.p2),
             c1 = getControlPoint(node.c1);
-        c2 = getControlPoint(node.c2);
+            c2 = getControlPoint(node.c2);
 
         // control line 1
         updateElement(
