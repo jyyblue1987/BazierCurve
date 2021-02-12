@@ -152,14 +152,56 @@ function generate_bezier_curve() {
                 y2: c2.y
             }
         );
-        // curve
-        const
-            d = `M${p1.x},${p1.y} C${c1.x},${c1.y} ${c2.x},${c2.y} ${p2.x},${p2.y}` +
-            (node.curve.classList.contains('fill') ? ' Z' : '');
 
-        updateElement(node.curve, { d });
+        var mydata = []
+       
 
-        node.path.textContent = `<path d="${d}" />`;
+        for (var i=0; i<=1; i+=0.05){
+            var p = getBezierXY(i, p1.x, p1.y, c1.x, c1.y, c2.x, c2.y, p2.x, p2.y);
+            
+            mydata.push({
+                x: p.x,
+                y: p.y,
+                radius: 3,
+                color: "black"
+            });
+        }
 
+        var pt_array = [p1, c1, c2, p2];
+        for(i = 0; i < pt_array.length; i++)
+        {
+            mydata.push({
+                x: pt_array[i].x,
+                y: pt_array[i].y,
+                radius: 5,
+                color: "black"
+            });
+        }
+
+        var circles = d3.select('#part_2')
+        var update = circles.selectAll("circle").data(mydata);
+        update.exit().remove();
+        update.enter().append("circle").merge(update)
+            .attr("cx", function(data, index) {
+                return data.x;
+            })
+            .attr("cy", function(data, index) {
+                return data.y;
+            })
+            .attr("r", function(data, index) {
+                return data.radius;
+            })
+            .style("fill", function(data, index) {
+                return data.color;
+            })
     }
+}
+
+function getBezierXY(t, sx, sy, cp1x, cp1y, cp2x, cp2y, ex, ey) {
+    return {
+      x: Math.pow(1-t,3) * sx + 3 * t * Math.pow(1 - t, 2) * cp1x 
+        + 3 * t * t * (1 - t) * cp2x + t * t * t * ex,
+      y: Math.pow(1-t,3) * sy + 3 * t * Math.pow(1 - t, 2) * cp1y 
+        + 3 * t * t * (1 - t) * cp2y + t * t * t * ey
+    };
 }
